@@ -21,7 +21,7 @@ function neighbourVals(r, c) {
 
 export default function Game() {
   const [score, setScore] = useState(0);
-  const [level, setLevel] = useState(100);
+  const [level, setLevel] = useState(1);
   const [value, setValue] = useState(Math.floor(Math.random() * 10) + 2);
   const [currValue, setCurrValue] = useState(Math.floor(Math.random() * 10) + 2);
   const [keepValue, setKeepValue] = useState(null);
@@ -241,8 +241,8 @@ export default function Game() {
         <DndContext onDragEnd={handleDragEnd}>
           <div className="cell-container">
             <div className="game-stats">
-              <ScorePanel score={score} />
               <LevelPanel level={level} />
+              <ScorePanel score={score} />
             </div>
 
             <GameBoard grid={grid} />
