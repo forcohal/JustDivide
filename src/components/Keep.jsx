@@ -10,10 +10,10 @@ export default function Keep({ id, value }) {
     attributes,
     transform
   } = useDraggable({
-    id: value !== null ? `keep-${value}` : null, // only draggable if value exists
+    id: value !== null ? `keep-${value}` : null,
   });
 
-  const style = {
+  const containerStyle = {
     width: "clamp(60px, 12vw, 100px)",
     height: "clamp(60px, 12vw, 100px)",
     border: "2px solid black",
@@ -21,20 +21,40 @@ export default function Keep({ id, value }) {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    position: "relative",
+    overflow: "visible",
+  };
+
+  const tileStyle = {
+    width: "80%",
+    height: "80%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "tomato",
+    color: "white",
+    borderRadius: "8px",
+    fontWeight: "bold",
+    fontSize: "clamp(14px, 2.5vw, 22px)",
+    cursor: "grab",
+    touchAction: "none",
     transform: CSS.Translate.toString(transform),
-    cursor: value ? "grab" : "default"
+    zIndex: transform ? 999 : "auto",
+    position: transform ? "relative" : "static",
   };
 
   return (
-    <div ref={setDropRef}>
-      <div
-        ref={value ? setDragRef : null}
-        style={style}
-        {...(value ? listeners : {})}
-        {...(value ? attributes : {})}
-      >
-        {value}
-      </div>
+    <div ref={setDropRef} style={containerStyle}>
+      {value !== null && (
+        <div
+          ref={setDragRef}
+          style={tileStyle}
+          {...listeners}
+          {...attributes}
+        >
+          {value}
+        </div>
+      )}
     </div>
   );
 }

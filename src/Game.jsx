@@ -7,6 +7,7 @@ import LevelPanel from "./components/LevelPanel";
 import Keep from "./components/Keep";
 import GameOver from "./components/GameOver";
 import { useEffect } from "react";
+import catImg from "./assets/Cat.png";
 
 
 
@@ -24,7 +25,9 @@ export default function Game() {
   const [level, setLevel] = useState(1);
   const [value, setValue] = useState(Math.floor(Math.random() * 10) + 2);
   const [currValue, setCurrValue] = useState(Math.floor(Math.random() * 10) + 2);
+  const [thirdValue, setThirdValue] = useState(Math.floor(Math.random() * 10) + 2);
   const [keepValue, setKeepValue] = useState(null);
+  const [trashCount, setTrashCount] = useState(1);
   const [highScore, setHighScore] = useState(() => {
   return Number(localStorage.getItem("bestScore")) || 0;
   });
@@ -51,6 +54,7 @@ export default function Game() {
     localStorage.setItem("bestScore", newHigh);
     setValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
     setCurrValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
+    setThirdValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
     setKeepValue(null);
     setIsGameOver(false);
     console.log("Game Over! Your score: " + score);
@@ -89,6 +93,7 @@ export default function Game() {
     if (score % 10 === 0) {
       console.log("Level up!");
       setLevel((prev) => prev + 1);
+      setTrashCount((c) => c + 1);
     }
   }
 
@@ -105,16 +110,21 @@ export default function Game() {
     console.log("Dragged ID:", draggedId);
 
     
-
+    
     if (over.id === "trash") {
+      if (trashCount === 0) return;
+
       if (isFromKeep) {
         setKeepValue(null);
+        setTrashCount((c) => c - 1);
         return;
       }
 
       console.log("Trashing value!");
+      setTrashCount((c) => c - 1);
       setCurrValue(value);
-      setValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
+      setValue(thirdValue);
+      setThirdValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
       return;
     }
 
@@ -123,7 +133,8 @@ export default function Game() {
 
       setKeepValue(currValue);
       setCurrValue(value);
-      setValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
+      setValue(thirdValue);
+      setThirdValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
       return;
     }
 
@@ -161,7 +172,8 @@ export default function Game() {
 
             setKeepValue(null);
             setCurrValue(value);
-            setValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
+            setValue(thirdValue);
+            setThirdValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
 
             return newGrid;
           });
@@ -193,7 +205,8 @@ export default function Game() {
           }
 
           setCurrValue(value);
-          setValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
+          setValue(thirdValue);
+          setThirdValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
 
           return newGrid;
         });
@@ -206,7 +219,8 @@ export default function Game() {
       if (newGrid[r][c] !== null) return prev;
 
       setCurrValue(value);
-      setValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
+      setValue(thirdValue);
+      setThirdValue(Math.floor(Math.random() * (9 + (level - 1) * 20) + 2));
 
       if (draggedId.startsWith("keep-")) {
         newGrid[r][c] = keepValue;
@@ -251,7 +265,9 @@ export default function Game() {
           <QueueTiles
             value1={currValue}
             value2={value}
+            value3={thirdValue}
             keepValue={keepValue}
+            trashCount={trashCount}
           />
         </DndContext>
       </div>
