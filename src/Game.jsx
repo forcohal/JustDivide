@@ -248,7 +248,7 @@ export default function Game() {
     <div className="game-page">
       <h1 style={{ textAlign: "center" }}>Just Divide</h1>
       <h2 style={{ textAlign: "center", marginTop: "-10px" }}>
-        Devide with the numbers to solve rows and columns!
+        Divide with the numbers to solve rows and columns!
       </h2>
 
       <div className="game-container">
