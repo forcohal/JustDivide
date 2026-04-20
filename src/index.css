@@ -54,6 +54,10 @@ body {
   color: #fff;
 }
 
+.level-panel h2, .score-panel h2 {
+  font-size: clamp(18px, 2vw, 28px);
+  padding-bottom: 10px;
+}
 .game-over-content p {
   font-size: clamp(16px, 2vw, 24px);
   color: #fff;
@@ -84,6 +88,7 @@ body {
   .game-page,
   .game-over {
     background-image: url("./assets/Portrait_JustDivide_Game_2.png");
+    
   }
 }
 

@@ -1,31 +1,20 @@
 # Just Divide - Kid Mode (ReactJS)
 
-A math-based puzzle game designed for children aged 7-12 to master division through strategic gameplay.
+I built this math-based puzzle game to help kids (ages 7-12) practice division through a simple, interactive interface. The goal was to take a design brief and turn it into a working React application.
 
-| Category | Details |
-| :--- | :--- |
-| **Tech Stack** | ReactJS, HTML5, CSS3 |
-| **Libraries** | @dnd-kit/core (Ensures Mobile/Touch support) |
-| **Persistence** | LocalStorage (Best Score tracking) |
-| **Status** | Core Gameplay & Logic Fully Functional |
+### 🎯 How I Built This
+* **The Tech Stack:** I used **ReactJS** for the core logic and **CSS** for the layout and styling.
+* **Real Mobile Support:** I originally tried a different drag-and-drop library, but it didn't work well on mobile. I switched to **@dnd-kit/core** specifically so that kids could play on tablets or phones using touch.
+* **Game Logic:** I wrote the code to handle merges the second a tile is dropped. If numbers match, they vanish; if one divides into the other, it replaces the tile with the result.
+* **Difficulty Scaling:** To keep the game from getting boring, I made the numbers get larger as the player levels up—starting with 1–10 and moving up to 1–50.
 
----
+### 🛠 The Challenges I Faced
+* **Learning Drag & Drop:** This was my first time ever working with drag-and-drop mechanics. It was a huge learning curve to figure out how to get the "active" tile to talk to the 16 different grid slots without the app crashing.
+* **The "Responsive" Headache:** Making the game look good on both a giant monitor and a tiny phone was tough. I used **Media Queries** to keep the grid centered and readable so the UI didn't break on smaller screens.
+* **The Cat Image Problem:** The cat image assets had a lot of empty space around them, which made alignment tricky. I had to spend extra time on the positioning to make sure the cat sat perfectly on top of the grid as shown in the design.
 
-## 🎯 Approach & Decisions
-* **Mobile-First Interaction:** I chose `@dnd-kit/core` specifically to ensure the game remains functional on touch devices, overcoming the mobile limitations found in other drag-and-drop libraries.
-* **Dynamic Difficulty:** I implemented logic where the number range expands as the player levels up (e.g., Level 1: 1-10, Level 2: 1-30) to keep the challenge engaging.
-* **Mathematical Logic:** Merges are resolved immediately. Equal tiles vanish, and divisible tiles are replaced by their quotient.
-
-## 🛠 Challenges Overcome
-* **D&D State Management:** As drag-and-drop was a new concept for me, I focused on syncing the state between the active tile queue and the 16-slot grid for a seamless experience.
-* **Responsive Scaling:** Achieving a visually faithful layout was a priority. I utilized CSS Media Queries to ensure the grid remains centered and legible across desktop, tablet, and mobile.
-* **Asset Positioning:** Handled complex UI layering, specifically centering the cat assets above the grid while accounting for transparency padding within the provided images.
-
-## 🚧 Known Limitations
-* **Advanced Features:** The Undo (up to 10 states) and Hint systems are currently in the roadmap and not yet implemented.
-* **Visual Refinement:** While functional, the UI polish is ongoing to reach 100% fidelity with the original design brief.
-
-## 💡 Future Suggestions
-* **Power-Up Blocks:** Introduce special blocks that grant rewards like a "Grid Eraser" or an extra "KEEP" slot when cleared.
-* **Initial Board Complexity:** At higher levels, spawn "pre-filled" cells with difficult numbers (like 23 or 27) to force deeper strategic planning.
-* **Multiplayer Mode:** Add a timed "Head-to-Head" mode for kids to compete with friends for the high score.
+### 🚧 What’s Next & My Ideas
+* **Current Gaps:** I haven't added the **Undo** or **Hint** systems yet. I also want to keep polishing the UI to get it even closer to the original brief.
+* **Power-up Concept:** I’d love to add "Special Blocks" that give you a reward when you break them—like a tool to delete a block from the grid or an extra "Keep" slot.
+* **Tougher Starts:** For higher levels, I’d suggest starting the game with "hard" numbers (like 23 or 27) already placed on the grid to force kids to think more strategically.
+* **Multiplayer:** I think a timed "Head-to-Head" mode would be great for kids to compete with their friends for the highest score.
