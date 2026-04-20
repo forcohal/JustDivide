@@ -238,7 +238,7 @@ export default function Game() {
 
   }
   if(isGameOver) {
-    
+    console.log("Game Over! Your score: " + score);
     return(
       <GameOver isOver={isGameOver} score={score} highScore={highScore} onRestart={restart} />
     )
