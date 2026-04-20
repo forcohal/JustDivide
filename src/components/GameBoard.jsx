@@ -9,13 +9,13 @@ function Cell({ id, children }) {
       ref={setNodeRef}
       className="cell"
       style={{
-        width: 100,
-        height: 100,
-        border: "1px solid #ccc",
+        width: "100%",
+        height: "100%",
+        border: "5px solid #cffef3",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: isOver ? "lightgreen" : "white",
+        background: isOver ? "#005c64" : "#048793",
       }}
     >
       {children}

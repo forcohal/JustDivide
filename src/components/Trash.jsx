@@ -6,8 +6,8 @@ function Trash({id}){
         ref ={setNodeRef}
         className="trash"
         style={{
-            width: 100,
-            height: 100,
+            width: "clamp(60px, 12vw, 100px)",
+            height: "clamp(60px, 12vw, 100px)",
             border: "2px solid black",
             background: isOver ? "lightcoral" : "white",
             display: "flex",

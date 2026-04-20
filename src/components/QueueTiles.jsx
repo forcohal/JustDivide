@@ -9,8 +9,8 @@ function DraggableBox({ id }) {
   });
 
   const style = {
-    width: 80,
-    height: 80,
+    width: "clamp(50px, 10vw, 80px)",
+    height: "clamp(50px, 10vw, 80px)",
     background: "tomato",
     color: "white",
     display: "flex",
